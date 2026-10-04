@@ -1,25 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { User } from '../models/user';
+import { environment } from '../../../../environments/environment';
 
 @Service()
 export class UserService {
-  private API_URL = 'https://6a77661063e9caf860c38402.mockapi.io/users'
+  private env = environment.API_URL
   private http = inject(HttpClient)
 
   getUsers() {
-    return this.http.get<User[]>(this.API_URL)
+    return this.http.get<User[]>(this.env)
   } 
 
   createUser(user: User) {
-    return this.http.post<User>(this.API_URL, user)
+    return this.http.post<User>(this.env, user)
   }
 
   updateUser(user: User) {
-    return this.http.put<User>(`${this.API_URL}/${user.id}`, user)
+    return this.http.put<User>(`${this.env}/${user.id}`, user)
   }
 
   deleteUser(id: string) {
-    return this.http.delete(`${this.API_URL}/${id}`)
+    return this.http.delete(`${this.env}/${id}`)
   }
 }
