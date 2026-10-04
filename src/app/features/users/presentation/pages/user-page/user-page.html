@@ -1,0 +1,18 @@
+<div class="flex">
+  <div class="px-4 py-5">
+    <app-form 
+      [userToEdit]="editUser()"
+      (onSubmit)="saveUser($event)" >
+    </app-form>
+  </div>
+  <div class="flex justify-center flex-wrap gap-4 mt-6">
+    @for (user of users(); track $index) {
+      <app-card 
+        [user]="user" 
+        (onEdit)="onEdit($event)"
+        (onDelete)="onDeleteUser($event)"
+        >
+      </app-card>
+    }
+  </div>
+</div>

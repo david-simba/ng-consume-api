@@ -1,0 +1,13 @@
+<div class="p-4 bg-gray-50 rounded-xl flex flex-col items-center">
+  <img
+    [src]="user().avatar"
+    [alt]="user().name"
+    class="h-20 rounded-full"
+  />
+  <h2>{{user().name}}</h2>
+  <p>{{user().email}}</p>
+  <div class="mt-4 space-x-2">
+    <button (click)="onEdit.emit(user())" class="bg-blue-400 text-white px-4 py-2 rounded-md text-sm">Editar</button>
+    <button (click)="onDelete.emit(user().id)" class="bg-red-500 text-white px-4 py-2 rounded-md text-sm">Eliminar</button>
+  </div>
+</div>

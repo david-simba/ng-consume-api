@@ -1,0 +1,45 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+  <div class="flex flex-col">
+    <label>Name</label>
+    <input
+      class="outline-1 rounded-md"
+      id="name"
+      type="text"
+      formControlName="name"
+    />
+    @if(userForm.controls.name.touched && userForm.controls.name.invalid) {
+      <span class="text-red-400 text-sm">Name is required</span>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label>Email</label>
+    <input
+      class="outline-1 rounded-md"
+      id="email"
+      type="text"
+      formControlName="email"
+    />
+    @if(userForm.controls.email.touched && userForm.controls.email.invalid) {
+      <span class="text-red-400 text-sm">Enter a valid email</span>
+    }
+  </div>
+  <div class="flex flex-col">
+    <label>Avatar</label>
+    <input
+      class="outline-1 rounded-md"
+      id="avatar"
+      type="text"
+      formControlName="avatar"
+    />
+    @if(userForm.controls.avatar.touched && userForm.controls.avatar.invalid) {
+      <span class="text-red-400 text-sm">Name is required</span>
+    }
+  </div>
+  <button type="submit" class="bg-blue-400 px-5 py-2 rounded-lg text-white mt-4 w-full">
+    @if(userToEdit()){
+      Update User
+    } @else {
+      Create User
+    }
+  </button>
+</form>
